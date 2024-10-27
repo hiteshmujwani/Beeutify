@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import {
+  Dimensions,
   FlatList,
   Image,
   ScrollView,
@@ -20,6 +21,9 @@ import offer_3 from '../assets/images/offer_3.png';
 export default function HomeScreen({navigation}: any) {
   const [searchQuery, setSearchQuery] = useState('');
   const images = [offer_1, offer_2, offer_3];
+
+  const {width: viewPortWidth} = Dimensions.get('window');
+  console.log(viewPortWidth * 0.95);
 
   return (
     <SafeAreaView className=" flex-1">
@@ -81,16 +85,17 @@ export default function HomeScreen({navigation}: any) {
           <View className="flex-1 rounded-xl overflow-hidden justify-center items-center mt-4">
             <Swiper
               loop
-              width={360}
+              width={viewPortWidth}
               height={200}
               autoplayTimeout={3}
               autoplay
-              pagingEnabled={false}
+              pagingEnabled={true}
+              snapToAlignment="center"
               paginationStyle={{display: 'none'}}>
               {images.map((item, index) => (
                 <View
                   key={index}
-                  className="justify-center h-[200px] w-[360px] items-center rounded-xl overflow-hidden">
+                  className="justify-center h-[200px] mx-4 items-center rounded-xl overflow-hidden">
                   <Image
                     source={item}
                     className="w-full h-full object-contain"
