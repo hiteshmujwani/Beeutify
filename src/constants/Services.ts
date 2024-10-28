@@ -12,14 +12,14 @@ import Bridal from '../assets/images/CustomIcons/Bridal.svg';
 const services = [
   {
     id: 0,
-    name: 'All',
+    label: 'All',
     description: 'Classic haircut with a consultation.',
     price: 25.0,
     type: 'Hair',
   },
   {
     id: 1,
-    name: 'Haircut',
+    label: 'Haircut',
     description: 'Classic haircut with a consultation.',
     price: 25.0,
     type: 'Hair',
@@ -27,7 +27,7 @@ const services = [
   },
   {
     id: 2,
-    name: 'Coloring',
+    label: 'Coloring',
     description: 'Full head coloring with premium products.',
     price: 75.0,
     type: 'Hair',
@@ -35,7 +35,7 @@ const services = [
   },
   {
     id: 3,
-    name: 'Manicure',
+    label: 'Manicure',
     description: 'Nail shaping, cuticle care, and polish.',
     price: 20.0,
     type: 'Nails',
@@ -43,7 +43,7 @@ const services = [
   },
   {
     id: 4,
-    name: 'Pedicure',
+    label: 'Pedicure',
     description: 'Soothing foot soak, scrub, and polish.',
     price: 30.0,
     type: 'Nails',
@@ -51,7 +51,7 @@ const services = [
   },
   {
     id: 5,
-    name: 'Facial',
+    label: 'Facial',
     description: 'Deep cleansing facial for all skin types.',
     price: 50.0,
     type: 'Skincare',
@@ -59,7 +59,7 @@ const services = [
   },
   {
     id: 6,
-    name: 'Massage',
+    label: 'Massage',
     description: 'Relaxing full-body massage.',
     price: 80.0,
     type: 'Spa',
@@ -67,7 +67,7 @@ const services = [
   },
   {
     id: 7,
-    name: 'Waxing',
+    label: 'Waxing',
     description: 'Full body waxing service.',
     price: 40.0,
     type: 'Body',
@@ -75,7 +75,7 @@ const services = [
   },
   {
     id: 8,
-    name: 'Threading',
+    label: 'Threading',
     description: 'Eyebrow shaping and facial threading.',
     price: 15.0,
     type: 'Face',
@@ -83,7 +83,7 @@ const services = [
   },
   {
     id: 9,
-    name: 'Makeup',
+    label: 'Makeup',
     description: 'Professional makeup for any occasion.',
     price: 60.0,
     type: 'Makeup',
@@ -91,7 +91,7 @@ const services = [
   },
   {
     id: 10,
-    name: 'Bridal',
+    label: 'Bridal',
     description: 'Comprehensive bridal beauty package.',
     price: 300.0,
     type: 'Special',

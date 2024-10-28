@@ -115,11 +115,19 @@ export default function HomeScreen({navigation}: any) {
               renderItem={({item}) => {
                 if (item.id != 0) {
                   return (
-                    <View className="flex items-center  mr-5 gap-2">
-                      <TouchableOpacity className=" bg-[#FF8C42]/10 p-5 rounded-xl" onPress={()=>navigation.navigate('Category',{categoryName:item.name})}>
+                    <View className="flex items-center mr-5">
+                      <TouchableOpacity
+                        className=" bg-[#FF8C42]/10 p-5 rounded-xl"
+                        onPress={() =>
+                          navigation.navigate('Category', {
+                            categoryName: item.label,
+                          })
+                        }>
                         {item.icon && <item.icon />}
                       </TouchableOpacity>
-                      <Text className="text-[14px] font-bold">{item.name}</Text>
+                      <Text className="text-[14px] font-bold">
+                        {item.label}
+                      </Text>
                     </View>
                   );
                 } else {
@@ -152,7 +160,7 @@ export default function HomeScreen({navigation}: any) {
                         className={`text-[#FF8C42] ${
                           item.id == 0 ? 'text-white' : 'text-[#FF8C42]'
                         } font-bold`}>
-                        {item.name}
+                        {item.label}
                       </Text>
                     </TouchableOpacity>
                   </View>
@@ -164,9 +172,7 @@ export default function HomeScreen({navigation}: any) {
                 data={shops}
                 scrollEnabled={false}
                 showsHorizontalScrollIndicator={false}
-                renderItem={({item}) => (
-                  <ShopCard item={item}/>
-                )}
+                renderItem={({item}) => <ShopCard item={item} />}
               />
             </View>
           </View>
