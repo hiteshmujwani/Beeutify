@@ -14,7 +14,7 @@ import {Badge, Searchbar} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/Ionicons';
 import services from '../constants/Services';
-import FilterIcon from '../assets/images/CustomIcons/filter-icon.svg'
+import FilterIcon from '../assets/images/CustomIcons/filter-icon.svg';
 import shops from '../constants/Shops';
 import Swiper from 'react-native-swiper';
 import offer_1 from '../assets/images/offer_1.png';
@@ -24,24 +24,26 @@ import ShopCard from '../components/ui/ShopCard';
 import HorizontolList from '../components/ui/HorizontolList';
 import SearchBar from '../components/ui/SearchBar';
 import HorizontolListWithSvg from '../components/ui/HorizontolListWithSvg';
-import { useSelector , useDispatch} from 'react-redux';
-import { handleSaveShop } from '../../store/slice/SavedShopSlice';
+import {useSelector, useDispatch} from 'react-redux';
+import {handleSaveShop} from '../../store/slice/SavedShopSlice';
 export default function HomeScreen({navigation}: any) {
-  const [nearbyShops,setNearbyShops]:any = useState([])
-  const savedShops = useSelector((state:any)=> state.saved)
-  const dispatch = useDispatch()
-  const [selectedService,setSelectedService]:any= useState()
-  const filterByService = (serviceName:any) =>{
-    const filteredArray = shops.filter(shop=> shop.services.includes(serviceName))
-    setNearbyShops(filteredArray)
-  }
+  const [nearbyShops, setNearbyShops]: any = useState([]);
+  const savedShops = useSelector((state: any) => state.saved);
+  const dispatch = useDispatch();
+  const [selectedService, setSelectedService]: any = useState();
+  const filterByService = (serviceName: any) => {
+    const filteredArray = shops.filter(shop =>
+      shop.services.includes(serviceName),
+    );
+    setNearbyShops(filteredArray);
+  };
   const images = [offer_1, offer_2, offer_3];
   const {width: viewPortWidth} = Dimensions.get('window');
 
   return (
     <SafeAreaView className=" flex-1">
       <ScrollView>
-        <StatusBar  showHideTransition={"slide"}/>
+        <StatusBar showHideTransition={'slide'} />
         <View className="m-3">
           {/* Header  */}
           <View className="flex flex-row gap-2 justify-between items-center">
@@ -76,8 +78,12 @@ export default function HomeScreen({navigation}: any) {
             </View>
           </View>
           {/* Search And Filter Section */}
-          <Pressable className="flex flex-row items-center gap-2 mt-4" onPress={()=>{navigation.navigate("Search")}}>
-            <SearchBar  navigation={navigation}/>
+          <Pressable
+            className="flex flex-row items-center gap-2 mt-4"
+            onPress={() => {
+              navigation.navigate('Search');
+            }}>
+            <SearchBar navigation={navigation} />
           </Pressable>
 
           {/* Special Offer Section  */}
@@ -113,7 +119,11 @@ export default function HomeScreen({navigation}: any) {
               renderItem={({item}) => {
                 if (item.id != 0) {
                   return (
-                    <HorizontolListWithSvg navigation={navigation} item={item} route={"Category"}/>
+                    <HorizontolListWithSvg
+                      navigation={navigation}
+                      item={item}
+                      route={'Category'}
+                    />
                   );
                 } else {
                   return null;
@@ -135,7 +145,11 @@ export default function HomeScreen({navigation}: any) {
                 showsHorizontalScrollIndicator={false}
                 data={services}
                 renderItem={({item}) => (
-                  <HorizontolList item={item} selected={selectedService} setSelected={filterByService}/>
+                  <HorizontolList
+                    item={item}
+                    selected={selectedService}
+                    setSelected={filterByService}
+                  />
                 )}
               />
             </View>
@@ -143,12 +157,11 @@ export default function HomeScreen({navigation}: any) {
               <FlatList
                 data={nearbyShops.length > 0 ? nearbyShops : shops}
                 scrollEnabled={false}
-                
                 showsHorizontalScrollIndicator={false}
-                renderItem={({item}) => <ShopCard item={item} savedShops={savedShops} toggleSaveShop={(item:any)=>dispatch(handleSaveShop(item))}/>}
+                renderItem={({item}) => <ShopCard item={item} />}
               />
             </View>
-          </View> 
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
