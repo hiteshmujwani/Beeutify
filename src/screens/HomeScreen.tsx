@@ -1,9 +1,11 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {
   Dimensions,
   FlatList,
   Image,
+  Pressable,
   ScrollView,
+  StatusBar,
   Text,
   TouchableOpacity,
   View,
@@ -12,23 +14,30 @@ import {Badge, Searchbar} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/Ionicons';
 import services from '../constants/Services';
-import FilterIcon from '../assets/images/CustomIcons/filter-icon.svg';
+import FilterIcon from '../assets/images/CustomIcons/filter-icon.svg'
 import shops from '../constants/Shops';
 import Swiper from 'react-native-swiper';
 import offer_1 from '../assets/images/offer_1.png';
 import offer_2 from '../assets/images/offer_2.png';
 import offer_3 from '../assets/images/offer_3.png';
 import ShopCard from '../components/ui/ShopCard';
+import HorizontolList from '../components/ui/HorizontolList';
+import SearchBar from '../components/ui/SearchBar';
+import HorizontolListWithSvg from '../components/ui/HorizontolListWithSvg';
 export default function HomeScreen({navigation}: any) {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [nearbyShops,setNearbyShops]:any = useState([])
+  const [selectedService,setSelectedService]:any= useState()
+  const filterByService = (serviceName:any) =>{
+    const filteredArray = shops.filter(shop=> shop.services.includes(serviceName))
+    setNearbyShops(filteredArray)
+  }
   const images = [offer_1, offer_2, offer_3];
-
   const {width: viewPortWidth} = Dimensions.get('window');
-  console.log(viewPortWidth * 0.95);
 
   return (
     <SafeAreaView className=" flex-1">
       <ScrollView>
+        <StatusBar  showHideTransition={"slide"}/>
         <View className="m-3">
           {/* Header  */}
           <View className="flex flex-row gap-2 justify-between items-center">
@@ -63,24 +72,9 @@ export default function HomeScreen({navigation}: any) {
             </View>
           </View>
           {/* Search And Filter Section */}
-          <View className="flex flex-row items-center gap-2 mt-4">
-            <View className="flex-1 !bg-white rounded-xl overflow-hidden">
-              <Searchbar
-                className="!bg-white"
-                placeholder="Search Salon, Parlour & Spas..."
-                placeholderTextColor={'#000000'}
-                iconColor="#000000"
-                onChangeText={e => setSearchQuery(e)}
-                value={searchQuery}
-                theme={{colors: {elevation: ''}}}
-              />
-            </View>
-            <View className="bg-white h-full flex flex-row rounded-xl px-5 justify-center items-center">
-              <TouchableOpacity className="bg-white rounded-xl ">
-                <FilterIcon />
-              </TouchableOpacity>
-            </View>
-          </View>
+          <Pressable className="flex flex-row items-center gap-2 mt-4" onPress={()=>{navigation.navigate("Search")}}>
+            <SearchBar  navigation={navigation}/>
+          </Pressable>
 
           {/* Special Offer Section  */}
           <View className="flex-1 rounded-xl overflow-hidden justify-center items-center mt-4">
@@ -115,20 +109,7 @@ export default function HomeScreen({navigation}: any) {
               renderItem={({item}) => {
                 if (item.id != 0) {
                   return (
-                    <View className="flex items-center mr-5">
-                      <TouchableOpacity
-                        className=" bg-[#FF8C42]/10 p-5 rounded-xl"
-                        onPress={() =>
-                          navigation.navigate('Category', {
-                            categoryName: item.label,
-                          })
-                        }>
-                        {item.icon && <item.icon />}
-                      </TouchableOpacity>
-                      <Text className="text-[14px] font-bold">
-                        {item.label}
-                      </Text>
-                    </View>
+                    <HorizontolListWithSvg navigation={navigation} item={item} route={"Category"}/>
                   );
                 } else {
                   return null;
@@ -149,30 +130,17 @@ export default function HomeScreen({navigation}: any) {
                 horizontal
                 showsHorizontalScrollIndicator={false}
                 data={services}
-                renderItem={({item, index}) => (
-                  <View
-                    key={index}
-                    className={`mr-2 px-6 py-3 rounded-full ${
-                      item.id == 0 ? 'bg-[#FF8C42]' : 'bg-white'
-                    }  border-2 border-[#FF8C42]`}>
-                    <TouchableOpacity className="flex flex-row items-center ">
-                      <Text
-                        className={`text-[#FF8C42] ${
-                          item.id == 0 ? 'text-white' : 'text-[#FF8C42]'
-                        } font-bold`}>
-                        {item.label}
-                      </Text>
-                    </TouchableOpacity>
-                  </View>
+                renderItem={({item}) => (
+                  <HorizontolList item={item} selected={selectedService} setSelected={filterByService}/>
                 )}
               />
             </View>
             <View className="mt-4 flex gap-2">
               <FlatList
-                data={shops}
+                data={nearbyShops.length > 0 ? nearbyShops : shops}
                 scrollEnabled={false}
                 showsHorizontalScrollIndicator={false}
-                renderItem={({item}) => <ShopCard item={item} />}
+                renderItem={({item}) => <ShopCard item={item}/>}
               />
             </View>
           </View>

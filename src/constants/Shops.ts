@@ -16,6 +16,7 @@ const shops = [
     distance: 2.3,
     location: '23 Green Valley, Sunset St, 560001',
     ShopProfileImage: Spa_1,
+    services: ['Massage', 'Facial', 'Body Scrub'],
   },
   {
     id: '2',
@@ -24,6 +25,7 @@ const shops = [
     distance: 1.8,
     location: '12 Maple Street, Downtown, 560002',
     ShopProfileImage: Parlour_1,
+    services: ['Haircut', 'Coloring', 'Styling'],
   },
   {
     id: '3',
@@ -32,6 +34,7 @@ const shops = [
     distance: 3.5,
     location: '89 Downtown Plaza, King Rd, 560003',
     ShopProfileImage: Parlour_2,
+    services: ['Nail Art', 'Waxing', 'Makeup'],
   },
   {
     id: '4',
@@ -40,6 +43,7 @@ const shops = [
     distance: 0.9,
     location: '45 Ocean Drive, Beachside, 560004',
     ShopProfileImage: Spa_2,
+    services: ['Aromatherapy', 'Massage'],
   },
   {
     id: '5',
@@ -48,6 +52,7 @@ const shops = [
     distance: 2.1,
     location: '101 Cedar Park, Hill Rd, 560005',
     ShopProfileImage: Salon_1,
+    services: ['Hair Treatments', 'Keratin'],
   },
   {
     id: '6',
@@ -56,6 +61,7 @@ const shops = [
     distance: 4.0,
     location: '55 Sunset Boulevard, Crescent Ave, 560006',
     ShopProfileImage: Spa_3,
+    services: ['Facial', 'Body Wrap', 'Manicure'],
   },
   {
     id: '7',
@@ -64,6 +70,7 @@ const shops = [
     distance: 3.2,
     location: '11 Hilltop Avenue, Brook St, 560007',
     ShopProfileImage: Parlour_3,
+    services: ['Coloring', 'Nail Care'],
   },
   {
     id: '8',
@@ -72,6 +79,7 @@ const shops = [
     distance: 1.2,
     location: '7 Rosewood Lane, Pine St, 560008',
     ShopProfileImage: Salon_2,
+    services: ['Bridal', 'Skin Care'],
   },
   {
     id: '9',
@@ -80,6 +88,7 @@ const shops = [
     distance: 2.9,
     location: '33 Pine Grove, Maple Rd, 560009',
     ShopProfileImage: Spa_1,
+    services: ['Massage', 'Reflexology'],
   },
   {
     id: '10',
@@ -88,6 +97,7 @@ const shops = [
     distance: 1.5,
     location: '90 Elm Street, Greenfield, 560010',
     ShopProfileImage: Parlour_1,
+    services: ['Haircut', 'Makeup', 'Facials'],
   },
   {
     id: '11',
@@ -96,6 +106,7 @@ const shops = [
     distance: 3.7,
     location: '66 Pearl Avenue, Oak St, 560011',
     ShopProfileImage: Salon_3,
+    services: ['Nail Extensions', 'Skin Treatments'],
   },
   {
     id: '12',
@@ -104,6 +115,7 @@ const shops = [
     distance: 5.0,
     location: '120 Highland Park, Royal Rd, 560012',
     ShopProfileImage: Spa_2,
+    services: ['Spa Packages', 'Massage'],
   },
   {
     id: '13',
@@ -112,6 +124,7 @@ const shops = [
     distance: 2.4,
     location: '78 Birchwood Road, Valley St, 560013',
     ShopProfileImage: Parlour_2,
+    services: ['Hair Styling', 'Makeup'],
   },
   {
     id: '14',
@@ -120,6 +133,7 @@ const shops = [
     distance: 1.1,
     location: '5 Coral Street, Bridge Rd, 560014',
     ShopProfileImage: Salon_1,
+    services: ['Bridal', 'Hair Treatments'],
   },
   {
     id: '15',
@@ -128,6 +142,7 @@ const shops = [
     distance: 3.0,
     location: '87 Willow Creek, Lake Rd, 560015',
     ShopProfileImage: Spa_3,
+    services: ['Massage', 'Reflexology'],
   },
   {
     id: '16',
@@ -136,6 +151,7 @@ const shops = [
     distance: 2.6,
     location: '110 Maplewood Drive, Oakfield, 560016',
     ShopProfileImage: Parlour_3,
+    services: ['Manicure', 'Pedicure', 'Haircut'],
   },
   {
     id: '17',
@@ -144,6 +160,7 @@ const shops = [
     distance: 1.9,
     location: '99 Lakeshore Road, Forest St, 560017',
     ShopProfileImage: Spa_1,
+    services: ['Relaxation Massage', 'Facials'],
   },
   {
     id: '18',
@@ -152,6 +169,7 @@ const shops = [
     distance: 3.3,
     location: '45 Magnolia Street, Elm St, 560018',
     ShopProfileImage: Salon_2,
+    services: ['Hair Coloring', 'Nail Art'],
   },
   {
     id: '19',
@@ -160,6 +178,7 @@ const shops = [
     distance: 2.7,
     location: '37 Aspen Heights, Mountain Rd, 560019',
     ShopProfileImage: Parlour_1,
+    services: ['Facial', 'Waxing', 'Nail Care'],
   },
   {
     id: '20',
@@ -168,7 +187,9 @@ const shops = [
     distance: 1.4,
     location: '22 Oakwood Boulevard, Birch St, 560020',
     ShopProfileImage: Spa_3,
+    services: ['Aromatherapy', 'Body Treatments'],
   },
 ];
+
 
 export default shops;

@@ -1,10 +1,12 @@
+import Icon from 'react-native-vector-icons/FontAwesome'
+
 export const Ratings = [
-  {id: 0, label: 'All', value: 'All', icon: true},
-  {id: 1, label: '5', value: 5, icon: true},
-  {id: 2, label: '4', value: 4, icon: true},
-  {id: 3, label: '3', value: 3, icon: true},
-  {id: 4, label: '2', value: 2, icon: true},
-  {id: 5, label: '1', value: 1, icon: true},
+  {id: 0, label: 'All', value: 'All',},
+  {id: 1, label: '5', value: 5,},
+  {id: 2, label: '4', value: 4,},
+  {id: 3, label: '3', value: 3,},
+  {id: 4, label: '2', value: 2,},
+  {id: 5, label: '1', value: 1,},
 ];
 
 export const Distance = [

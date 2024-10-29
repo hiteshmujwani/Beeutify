@@ -1,5 +1,5 @@
 import { View, Text, Image } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import Icon from 'react-native-vector-icons/Ionicons';
 
 type ShopItemProps = {
@@ -13,7 +13,8 @@ type ShopItemProps = {
     };
   };
 
-const ShopCard = ({item}:ShopItemProps) => {
+const ShopCard = ({item}:any) => {
+  // const isSaved = savedShops.includes(item.id);
   return (
     <View className="bg-white mb-6 p-4 rounded-2xl flex flex-row gap-3">
                     <Image
@@ -48,7 +49,8 @@ const ShopCard = ({item}:ShopItemProps) => {
                         </View>
                       </View>
                       <Icon
-                        name={item.id == '1' ? 'bookmark' : 'bookmark-outline'}
+                        // onPress={()=>toggleSaveShop(item.id)}
+                        name={item.id == "1" ? 'bookmark' : 'bookmark-outline'}
                         size={25}
                         color={'#FF8C42'}
                       />
