@@ -1,6 +1,6 @@
-// store/rootReducer.js
+
 import { combineReducers } from 'redux';
-import savedShopSlice from './slice/SavedShopSlice'; // Your example slice
+import savedShopSlice from './slice/SavedShopSlice'; 
 
 const rootReducer = combineReducers({
   saved: savedShopSlice,

@@ -6,7 +6,7 @@ import { handleSaveShop } from '../../../store/slice/SavedShopSlice';
 
 type ShopItemProps = {
     item: {
-      ShopProfileImage: any; // Adjust type according to your image source
+      ShopProfileImage: any; 
       name: string;
       location: string;
       distance: number;

@@ -1,4 +1,4 @@
-// store/exampleSlice.js
+
 import { createSlice } from '@reduxjs/toolkit';
 
 const savedShopSlice = createSlice({
