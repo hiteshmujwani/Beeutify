@@ -11,7 +11,6 @@ import services from '../constants/Services';
 
 const SavedScreen = ({navigation}: any) => {
   const savedShops = useSelector((state: any) => state.saved);
-  const dispatch = useDispatch();
   const [selectedService, setSelectedService] = useState('All');
   const [savedShopsByservice, setSavedShopsByservice] = useState('');
   const filterByService = (serviceName: any) => {

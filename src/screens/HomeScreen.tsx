@@ -28,13 +28,12 @@ import {useSelector, useDispatch} from 'react-redux';
 import {handleSaveShop} from '../../store/slice/SavedShopSlice';
 export default function HomeScreen({navigation}: any) {
   const [nearbyShops, setNearbyShops]: any = useState([]);
-  const savedShops = useSelector((state: any) => state.saved);
-  const dispatch = useDispatch();
-  const [selectedService, setSelectedService]: any = useState();
+  const [selectedService, setSelectedService]: any = useState('All');
   const filterByService = (serviceName: any) => {
     const filteredArray = shops.filter(shop =>
       shop.services.includes(serviceName),
     );
+    setSelectedService(serviceName);
     setNearbyShops(filteredArray);
   };
   const images = [offer_1, offer_2, offer_3];
