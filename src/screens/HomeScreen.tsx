@@ -24,8 +24,12 @@ import ShopCard from '../components/ui/ShopCard';
 import HorizontolList from '../components/ui/HorizontolList';
 import SearchBar from '../components/ui/SearchBar';
 import HorizontolListWithSvg from '../components/ui/HorizontolListWithSvg';
+import { useSelector , useDispatch} from 'react-redux';
+import { handleSaveShop } from '../../store/slice/SavedShopSlice';
 export default function HomeScreen({navigation}: any) {
   const [nearbyShops,setNearbyShops]:any = useState([])
+  const savedShops = useSelector((state:any)=> state.saved)
+  const dispatch = useDispatch()
   const [selectedService,setSelectedService]:any= useState()
   const filterByService = (serviceName:any) =>{
     const filteredArray = shops.filter(shop=> shop.services.includes(serviceName))
@@ -139,11 +143,12 @@ export default function HomeScreen({navigation}: any) {
               <FlatList
                 data={nearbyShops.length > 0 ? nearbyShops : shops}
                 scrollEnabled={false}
+                
                 showsHorizontalScrollIndicator={false}
-                renderItem={({item}) => <ShopCard item={item}/>}
+                renderItem={({item}) => <ShopCard item={item} savedShops={savedShops} toggleSaveShop={(item:any)=>dispatch(handleSaveShop(item))}/>}
               />
             </View>
-          </View>
+          </View> 
         </View>
       </ScrollView>
     </SafeAreaView>

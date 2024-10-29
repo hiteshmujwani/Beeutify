@@ -19,7 +19,7 @@ export default function MainTabNavigator() {
   return (
     <Tab.Navigator
       screenOptions={{
-        headerShown: false,
+        
         tabBarStyle: {height: 70},
         tabBarLabelStyle: {
           fontSize: 12,
@@ -31,6 +31,7 @@ export default function MainTabNavigator() {
       <Tab.Screen
         name="Home"
         options={{
+          headerShown: false,
           title: 'Home',
           tabBarIcon: ({focused}) =>
             focused ? <HomeFilled /> : <HomeOutline />,
@@ -40,6 +41,7 @@ export default function MainTabNavigator() {
       <Tab.Screen
         name="booking"
         options={{
+          headerShown: false,
           title: 'Booking',
           tabBarIcon: ({focused}) =>
             focused ? <BookingFilled /> : <BookingOutline />,
@@ -48,8 +50,10 @@ export default function MainTabNavigator() {
       />
       <Tab.Screen
         name="saved"
+        
         options={{
-          title: 'Saved',
+          
+          headerShown: true,
           tabBarIcon: ({focused}) =>
             focused ? <SavedFilled /> : <SavedOutline />,
         }}
@@ -59,6 +63,7 @@ export default function MainTabNavigator() {
         name="profile"
         options={{
           title: 'Profile',
+          headerShown: false,
           tabBarIcon: ({focused}) =>
             focused ? <ProfileFilled /> : <ProfileOutline />,
         }}
