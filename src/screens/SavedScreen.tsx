@@ -15,7 +15,7 @@ const SavedScreen = ({navigation}: any) => {
   const [savedShopsByservice, setSavedShopsByservice] = useState('');
   const filterByService = (serviceName: any) => {
     const filteredArray = savedShops.filter((shop: any) =>
-      shop.services.includes(serviceName),
+      shop.services.includes(serviceName.label),
     );
     setSelectedService(serviceName);
     setSavedShopsByservice(filteredArray);
@@ -28,6 +28,7 @@ const SavedScreen = ({navigation}: any) => {
           <View className="my-4">
             <FlatList
               horizontal
+              showsHorizontalScrollIndicator={false}
               data={services}
               renderItem={({item}) => (
                 <HorizontolList

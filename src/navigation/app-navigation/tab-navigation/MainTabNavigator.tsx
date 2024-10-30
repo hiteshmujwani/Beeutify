@@ -19,7 +19,6 @@ export default function MainTabNavigator() {
   return (
     <Tab.Navigator
       screenOptions={{
-        
         tabBarStyle: {height: 70},
         tabBarLabelStyle: {
           fontSize: 12,
@@ -50,9 +49,7 @@ export default function MainTabNavigator() {
       />
       <Tab.Screen
         name="saved"
-        
         options={{
-          
           headerShown: true,
           tabBarIcon: ({focused}) =>
             focused ? <SavedFilled /> : <SavedOutline />,

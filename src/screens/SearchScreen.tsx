@@ -5,29 +5,58 @@ import SearchBar from '../components/ui/SearchBar';
 import FilterModal from '../components/ui/FilterModal';
 import shops from '../constants/Shops';
 import ShopCard from '../components/ui/ShopCard';
-import { Distance, Ratings } from '../constants/OtherData';
+import {Distance, Ratings} from '../constants/OtherData';
 import services from '../constants/Services';
 
 const SearchScreen = ({navigation}: any) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [showModal, setShowModal] = useState(false);
-  const [searchResult, setSearchResult] = useState('');
-  const [filterQuery,setFilterQuery] = useState({service:services[0],rating:Ratings[0],distance:Distance[0]})
+  const [searchResult, setSearchResult]: any = useState([]);
+  const [filterQuery, setFilterQuery] = useState({
+    service: services[0],
+    rating: Ratings[0],
+    distance: Distance[0],
+  });
 
   const SearchByQuery = () => {
+    setFilterQuery({
+      service: services[0],
+      rating: Ratings[0],
+      distance: Distance[0],
+    });
     const FilteredArray: any = shops.filter(shop =>
       shop.name.toLowerCase().includes(searchQuery.toLowerCase()),
     );
     setSearchResult(FilteredArray);
   };
 
-  const handleFilter = () =>{
-    const FilteredArray:any = searchResult.filter(shop => )
-  }
+  const handleFilter = (filter: boolean) => {
+    if (filter) {
+      let filteredArray = [];
+      if (searchResult.length > 0) {
+        filteredArray = searchResult.filter(
+          (
+            shop: any, //only service based filter is working will add more in future
+          ) => shop.services.includes(filterQuery.service.label),
+        );
+      } else {
+        filteredArray = shops.filter((shop: any) =>
+          shop.services.includes(filterQuery.service.label),
+        );
+      }
+      setSearchResult(filteredArray);
+      setShowModal(!showModal);
+    } else {
+      SearchByQuery();
+      setShowModal(!showModal);
+    }
+  };
 
   useEffect(() => {
     if (searchQuery.length >= 1) {
       SearchByQuery();
+    } else {
+      setSearchResult([]);
     }
   }, [searchQuery]);
 
@@ -59,13 +88,25 @@ const SearchScreen = ({navigation}: any) => {
             </View>
           )}
           <View className="mt-4">
-            <FlatList
-              scrollEnabled={false}
-              data={searchResult}
-              renderItem={({item}) => <ShopCard item={item} />}
-            />
+            {searchResult.length > 0 ? (
+              <FlatList
+                scrollEnabled={false}
+                data={searchResult}
+                renderItem={({item}) => <ShopCard item={item} />}
+              />
+            ) : (
+              <View className="flex-1 justify-center items-center">
+                <Text>No Shop</Text>
+              </View>
+            )}
           </View>
-          <FilterModal setShowModal={setShowModal} showModal={showModal} selected={filterQuery} setSelected={setFilterQuery} />
+          <FilterModal
+            setShowModal={setShowModal}
+            showModal={showModal}
+            selected={filterQuery}
+            setSelected={setFilterQuery}
+            handleFilter={handleFilter}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>

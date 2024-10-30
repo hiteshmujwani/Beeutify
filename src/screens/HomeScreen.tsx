@@ -36,9 +36,8 @@ export default function HomeScreen({navigation}: any) {
   const images = [offer_1, offer_2, offer_3];
   const {width: viewPortWidth} = Dimensions.get('window');
 
-
   return (
-    <SafeAreaView className=" flex-1">
+    <SafeAreaView className=" flex-1 ">
       <ScrollView>
         <StatusBar showHideTransition={'slide'} />
         <View className="m-3">
@@ -76,7 +75,7 @@ export default function HomeScreen({navigation}: any) {
           </View>
           {/* Search And Filter Section */}
           <Pressable
-            className="flex flex-row items-center gap-2 mt-4"
+            className="flex flex-row items-center gap-2 mt-4 "
             onPress={() => {
               navigation.navigate('Search');
             }}>
@@ -141,13 +140,15 @@ export default function HomeScreen({navigation}: any) {
                 horizontal
                 showsHorizontalScrollIndicator={false}
                 data={services}
-                renderItem={({item}) => (
-                  selectedService && <HorizontolList
-                    item={item}
-                    selected={selectedService}
-                    setSelected={filterByService}
-                  />
-                )}
+                renderItem={({item}) =>
+                  selectedService && (
+                    <HorizontolList
+                      item={item}
+                      selected={selectedService}
+                      setSelected={filterByService}
+                    />
+                  )
+                }
               />
             </View>
             <View className="mt-4 flex gap-2">
