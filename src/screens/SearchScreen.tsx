@@ -5,11 +5,14 @@ import SearchBar from '../components/ui/SearchBar';
 import FilterModal from '../components/ui/FilterModal';
 import shops from '../constants/Shops';
 import ShopCard from '../components/ui/ShopCard';
+import { Distance, Ratings } from '../constants/OtherData';
+import services from '../constants/Services';
 
 const SearchScreen = ({navigation}: any) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [searchResult, setSearchResult] = useState('');
+  const [filterQuery,setFilterQuery] = useState({service:services[0],rating:Ratings[0],distance:Distance[0]})
 
   const SearchByQuery = () => {
     const FilteredArray: any = shops.filter(shop =>
@@ -17,6 +20,10 @@ const SearchScreen = ({navigation}: any) => {
     );
     setSearchResult(FilteredArray);
   };
+
+  const handleFilter = () =>{
+    const FilteredArray:any = searchResult.filter(shop => )
+  }
 
   useEffect(() => {
     if (searchQuery.length >= 1) {
@@ -58,7 +65,7 @@ const SearchScreen = ({navigation}: any) => {
               renderItem={({item}) => <ShopCard item={item} />}
             />
           </View>
-          <FilterModal setShowModal={setShowModal} showModal={showModal} />
+          <FilterModal setShowModal={setShowModal} showModal={showModal} selected={filterQuery} setSelected={setFilterQuery} />
         </View>
       </ScrollView>
     </SafeAreaView>

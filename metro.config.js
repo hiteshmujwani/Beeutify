@@ -9,6 +9,8 @@ const config = mergeConfig(getDefaultConfig(__dirname), {
     assetExts: getDefaultConfig(__dirname).resolver.assetExts.filter(
       ext => ext !== 'svg',
     ),
+    unstable_enableSymlinks: true,
+    unstable_enablePackageExports:true,
     sourceExts: [...getDefaultConfig(__dirname).resolver.sourceExts, 'svg'],
    
   },

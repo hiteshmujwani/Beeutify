@@ -14,7 +14,6 @@ import {Badge, Searchbar} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/Ionicons';
 import services from '../constants/Services';
-import FilterIcon from '../assets/images/CustomIcons/filter-icon.svg';
 import shops from '../constants/Shops';
 import Swiper from 'react-native-swiper';
 import offer_1 from '../assets/images/offer_1.png';
@@ -24,20 +23,19 @@ import ShopCard from '../components/ui/ShopCard';
 import HorizontolList from '../components/ui/HorizontolList';
 import SearchBar from '../components/ui/SearchBar';
 import HorizontolListWithSvg from '../components/ui/HorizontolListWithSvg';
-import {useSelector, useDispatch} from 'react-redux';
-import {handleSaveShop} from '../../store/slice/SavedShopSlice';
 export default function HomeScreen({navigation}: any) {
   const [nearbyShops, setNearbyShops]: any = useState([]);
-  const [selectedService, setSelectedService]: any = useState('All');
-  const filterByService = (serviceName: any) => {
+  const [selectedService, setSelectedService]: any = useState(services[0]);
+  const filterByService = (service: any) => {
     const filteredArray = shops.filter(shop =>
-      shop.services.includes(serviceName),
+      shop.services.includes(service.label),
     );
-    setSelectedService(serviceName);
+    setSelectedService(service);
     setNearbyShops(filteredArray);
   };
   const images = [offer_1, offer_2, offer_3];
   const {width: viewPortWidth} = Dimensions.get('window');
+
 
   return (
     <SafeAreaView className=" flex-1">
@@ -116,7 +114,7 @@ export default function HomeScreen({navigation}: any) {
               horizontal
               showsHorizontalScrollIndicator={false}
               renderItem={({item}) => {
-                if (item.id != 0) {
+                if (item.id != 1) {
                   return (
                     <HorizontolListWithSvg
                       navigation={navigation}
@@ -144,7 +142,7 @@ export default function HomeScreen({navigation}: any) {
                 showsHorizontalScrollIndicator={false}
                 data={services}
                 renderItem={({item}) => (
-                  <HorizontolList
+                  selectedService && <HorizontolList
                     item={item}
                     selected={selectedService}
                     setSelected={filterByService}

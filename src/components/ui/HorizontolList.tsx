@@ -6,20 +6,20 @@ const HorizontolList = ({item, icon, selected, setSelected}: any) => {
   return (
     <TouchableOpacity
       key={item.id}
-      onPress={() => setSelected(item.label)}
+      onPress={() => setSelected(item)}
       className={`mr-2 px-6 py-3 rounded-full ${
-        item.label == selected ? 'bg-[#FF8C42]' : 'bg-white'
+        item.id == selected.id ? 'bg-[#FF8C42]' : 'bg-white'
       }  border-2 border-[#FF8C42]`}>
       <View className="flex flex-row items-center gap-2">
         {icon && (
           <Icon
             name="star"
-            color={item.label == selected ? '#ffffff' : '#FF8C42'}
+            color={item.id == selected.id ? '#ffffff' : '#FF8C42'}
           />
         )}
         <Text
           className={`text-[#FF8C42] ${
-            item.label == selected ? 'text-white' : 'text-[#FF8C42]'
+            item.id == selected.id ? 'text-white' : 'text-[#FF8C42]'
           } font-bold`}>
           {item.label}
         </Text>

@@ -5,7 +5,7 @@ import FilterItem from './FilterItem';
 import services from '../../constants/Services';
 import { Distance, Ratings } from '../../constants/OtherData';
 
-const FilterModal = ({showModal,setShowModal}:any) => {
+const FilterModal = ({showModal,setShowModal,selected,setSelected}:any) => {
   return (
     <View>
       <Modal visible={showModal} animationType="slide" transparent>
@@ -21,9 +21,9 @@ const FilterModal = ({showModal,setShowModal}:any) => {
                   </Text>
                   <Divider className="mx-5 my-3" />
                   <View className="flex gap-6 my-4">
-                    <FilterItem data={services}/>
-                    <FilterItem data={Ratings} icon={true}/>
-                    <FilterItem data={Distance}/>
+                    <FilterItem data={services} selected={selected.service} setSelected={(service:any)=>setSelected((prev:any)=>({...prev,service:service}))}/>
+                    <FilterItem data={Ratings} icon={true} selected={selected.rating} setSelected={(rating:any)=>setSelected((prev:any)=>({...prev,rating:rating}))}/>
+                    <FilterItem data={Distance}  selected={selected.distance} setSelected={(distance:any)=>setSelected((prev:any)=>({...prev,distance:distance}))}/>
                   </View>
                   <Divider className="mx-5 my-3" />
                   <View className="flex flex-row my-4 px-8 py-3  gap-5">
@@ -33,7 +33,7 @@ const FilterModal = ({showModal,setShowModal}:any) => {
                       </Text>
                     </TouchableOpacity>
                     <TouchableOpacity className="flex-1 items-center justify-center bg-[#ff8c42] rounded-full p-5">
-                      <Text className="text-xl font-medium text-white">
+                      <Text className="text-xl font-medium text-white" >
                         Apply Filter
                       </Text>
                     </TouchableOpacity>

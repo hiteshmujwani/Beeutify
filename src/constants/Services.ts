@@ -11,14 +11,14 @@ import Bridal from '../assets/images/CustomIcons/Bridal.svg';
 
 const services = [
   {
-    id: 0,
+    id: 1,
     label: 'All',
     description: 'Classic haircut with a consultation.',
     price: 25.0,
     type: 'Hair',
   },
   {
-    id: 1,
+    id: 2,
     label: 'Haircut',
     description: 'Classic haircut with a consultation.',
     price: 25.0,
@@ -26,7 +26,7 @@ const services = [
     icon: Haircut,
   },
   {
-    id: 2,
+    id: 3,
     label: 'Coloring',
     description: 'Full head coloring with premium products.',
     price: 75.0,
@@ -34,7 +34,7 @@ const services = [
     icon: Coloring,
   },
   {
-    id: 3,
+    id: 4,
     label: 'Manicure',
     description: 'Nail shaping, cuticle care, and polish.',
     price: 20.0,
@@ -42,7 +42,7 @@ const services = [
     icon: Manicure,
   },
   {
-    id: 4,
+    id: 5,
     label: 'Pedicure',
     description: 'Soothing foot soak, scrub, and polish.',
     price: 30.0,
@@ -50,7 +50,7 @@ const services = [
     icon: Pedicure,
   },
   {
-    id: 5,
+    id: 6,
     label: 'Facial',
     description: 'Deep cleansing facial for all skin types.',
     price: 50.0,
@@ -58,7 +58,7 @@ const services = [
     icon: Facial,
   },
   {
-    id: 6,
+    id: 7,
     label: 'Massage',
     description: 'Relaxing full-body massage.',
     price: 80.0,
@@ -66,7 +66,7 @@ const services = [
     icon: Massage,
   },
   {
-    id: 7,
+    id: 8,
     label: 'Waxing',
     description: 'Full body waxing service.',
     price: 40.0,
@@ -74,7 +74,7 @@ const services = [
     icon: Waxing,
   },
   {
-    id: 8,
+    id: 9,
     label: 'Threading',
     description: 'Eyebrow shaping and facial threading.',
     price: 15.0,
@@ -82,7 +82,7 @@ const services = [
     icon: Threading,
   },
   {
-    id: 9,
+    id: 10,
     label: 'Makeup',
     description: 'Professional makeup for any occasion.',
     price: 60.0,
@@ -90,7 +90,7 @@ const services = [
     icon: Makeup,
   },
   {
-    id: 10,
+    id: 11,
     label: 'Bridal',
     description: 'Comprehensive bridal beauty package.',
     price: 300.0,
