@@ -12,6 +12,7 @@ import ProfileOutline from '../../../assets/images/CustomIcons/Profile.svg';
 import ProfileScreen from '../../../screens/ProfileScreen';
 import SavedScreen from '../../../screens/SavedScreen';
 import BookingScreen from '../../../screens/BookingScreen';
+import Icon from 'react-native-vector-icons/Ionicons'
 
 const Tab = createBottomTabNavigator();
 
@@ -39,12 +40,15 @@ export default function MainTabNavigator() {
       />
       <Tab.Screen
         name="booking"
-        options={{
-          headerShown: false,
-          title: 'Booking',
+        options={({route,navigation})=>(
+          {
+          headerShown: true,
+          headerTitleStyle:{fontWeight:"700",fontSize:22,marginLeft:10},
+          headerLeft:()=> <Icon name='arrow-back' size={25} className='ml-5' onPress={()=>navigation.goBack()}/>,
+          title: 'My Bookings',
           tabBarIcon: ({focused}) =>
-            focused ? <BookingFilled /> : <BookingOutline />,
-        }}
+            focused ? <BookingFilled/> : <BookingOutline/>,
+        })}
         component={BookingScreen}
       />
       <Tab.Screen

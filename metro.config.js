@@ -10,11 +10,13 @@ const config = mergeConfig(getDefaultConfig(__dirname), {
       ext => ext !== 'svg',
     ),
     unstable_enableSymlinks: true,
-    unstable_enablePackageExports:true,
-    sourceExts: [...getDefaultConfig(__dirname).resolver.sourceExts, 'svg'],
-   
+    unstable_enablePackageExports: true,
+    sourceExts: [
+      ...getDefaultConfig(__dirname).resolver.sourceExts,
+      'svg', // Include svg files
+      'android.js', // Include android.js to avoid SHA-1 error
+    ],
   },
 });
-
 
 module.exports = withNativeWind(config, { input: './global.css' });
