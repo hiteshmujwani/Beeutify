@@ -24,29 +24,33 @@ const SavedScreen = ({navigation}: any) => {
   return (
     <SafeAreaView className="flex-1">
       <ScrollView>
-        <View className="m-3">
-          <View className="my-4">
+        {savedShops.length > 0 && (
+          <View className="m-3">
+            <View className="my-4">
+              <FlatList
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                data={services}
+                renderItem={({item}) => (
+                  <HorizontolList
+                    item={item}
+                    selected={selectedService}
+                    setSelected={filterByService}
+                  />
+                )}
+              />
+            </View>
             <FlatList
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              data={services}
-              renderItem={({item}) => (
-                <HorizontolList
-                  item={item}
-                  selected={selectedService}
-                  setSelected={filterByService}
-                />
-              )}
+              scrollEnabled={false}
+              data={
+                savedShopsByservice.length > 0
+                  ? savedShopsByservice
+                  : savedShops
+              }
+              renderItem={({item}) => <ShopCard item={item} />}
             />
           </View>
-          <FlatList
-            scrollEnabled={false}
-            data={
-              savedShopsByservice.length > 0 ? savedShopsByservice : savedShops
-            }
-            renderItem={({item}) => <ShopCard item={item} />}
-          />
-        </View>
+        )}
       </ScrollView>
     </SafeAreaView>
   );
