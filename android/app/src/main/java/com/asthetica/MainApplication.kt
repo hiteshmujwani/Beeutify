@@ -1,4 +1,4 @@
-package com.shaadow
+package com.shaadow.asthetica.client
 
 import android.app.Application
 import com.facebook.react.PackageList

@@ -78,9 +78,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.shaadow"
+    namespace "com.shaadow.asthetica.client"
     defaultConfig {
-        applicationId "com.shaadow"
+        applicationId "com.shaadow.asthetica.client"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

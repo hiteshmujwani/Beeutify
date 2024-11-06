@@ -1,4 +1,4 @@
-package com.shaadow
+package com.shaadow.asthetica.client
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
