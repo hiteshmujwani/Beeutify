@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "45316704796",
+    "project_id": "shaadow-8c740",
+    "storage_bucket": "shaadow-8c740.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:45316704796:android:bb8014760917f1ac9eadd9",
+        "android_client_info": {
+          "package_name": "com.shaadow.asthetica.client"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqeK6fSvJaPUq94TZZnjB8kk5trZm5VZM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

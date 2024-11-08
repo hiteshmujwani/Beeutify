@@ -9,8 +9,11 @@ const config = mergeConfig(getDefaultConfig(__dirname), {
     assetExts: getDefaultConfig(__dirname).resolver.assetExts.filter(
       ext => ext !== 'svg',
     ),
-    unstable_enableSymlinks: true,
+    unstable_enableSymlinks: false, // Temporarily disabling symlinks if you face issues on Windows
     unstable_enablePackageExports: true,
+    blockList: [
+      /node_modules\/react-native-css-interop/, // Ensure this directory is not excluded
+    ],
     sourceExts: [
       ...getDefaultConfig(__dirname).resolver.sourceExts,
       'svg', // Include svg files
