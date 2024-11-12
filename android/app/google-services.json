@@ -1,32 +1,13 @@
 {
   "project_info": {
-    "project_number": "45316704796",
-    "project_id": "shaadow-8c740",
-    "storage_bucket": "shaadow-8c740.firebasestorage.app"
+    "project_number": "597984556906",
+    "project_id": "beeutify",
+    "storage_bucket": "beeutify.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:45316704796:android:bb8014760917f1ac9eadd9",
-        "android_client_info": {
-          "package_name": "com.shaadow.asthetica.client"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDqeK6fSvJaPUq94TZZnjB8kk5trZm5VZM"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:45316704796:android:8b193bdc998a14a99eadd9",
+        "mobilesdk_app_id": "1:597984556906:android:13e29185faf18df01f5713",
         "android_client_info": {
           "package_name": "com.shaadow.beeutify.client"
         }
@@ -34,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDqeK6fSvJaPUq94TZZnjB8kk5trZm5VZM"
+          "current_key": "AIzaSyCAZmOLhcOtTPlWimiLhPtZ2sv_n_e8FBQ"
         }
       ],
       "services": {
