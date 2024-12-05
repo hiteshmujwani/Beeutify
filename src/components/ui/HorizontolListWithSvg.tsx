@@ -1,13 +1,15 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 
-const HorizontolListWithSvg = ({navigation,route,item}:any) => {
+const HorizontolListWithSvg = ({item}:any) => {
+  const navigation:any = useNavigation()
   return (
     <View className="flex items-center mr-5">
                       <TouchableOpacity
                         className=" bg-[#FF8C42]/10 p-5 rounded-xl"
                         onPress={() =>
-                          navigation.navigate(route, {
+                          navigation.navigate("Category", {
                             categoryName: item.label,
                           })
                         }>

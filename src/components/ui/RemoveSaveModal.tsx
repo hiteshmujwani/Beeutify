@@ -23,7 +23,7 @@ const RemoveSavedModal = ({showModal, setShowModal, removeableShop}: any) => {
               <View className="bg-white  p-4 rounded-2xl flex flex-row gap-3 ">
                 <Image
                   className="h-[80px] w-[80px] rounded-2xl"
-                  source={removeableShop.ShopProfileImage}
+                  source={require('../../assets/images/ShopProfileImage/Parlour_1.png')}
                 />
                 <View className="flex-1 flex-row justify-between">
                   <View className="flex gap-2">
@@ -32,8 +32,7 @@ const RemoveSavedModal = ({showModal, setShowModal, removeableShop}: any) => {
                     </Text>
                     <Text className="text-sm text-black/60 font-bold">
                       {removeableShop &&
-                        removeableShop.location.substring(0, 20)}
-                      ...
+                        removeableShop.contactInfo.address.substring(0, 20)}
                     </Text>
                     <View className="flex flex-row gap-4">
                       <View className="flex flex-row items-center gap-1">
@@ -43,7 +42,7 @@ const RemoveSavedModal = ({showModal, setShowModal, removeableShop}: any) => {
                           color={'#FF8C42'}
                         />
                         <Text className="text-sm font-bold">
-                          {removeableShop.distance} Km
+                          2 Km
                         </Text>
                       </View>
                       <View className="flex flex-row items-center gap-1">

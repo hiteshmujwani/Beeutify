@@ -1,9 +1,10 @@
-import {View, Text, Image, Modal} from 'react-native';
+import {View, Text, Image, Modal, Pressable} from 'react-native';
 import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useDispatch, useSelector} from 'react-redux';
 import {handleSaveShop} from '../../../store/slice/SavedShopSlice';
 import RemoveSavedModal from './RemoveSaveModal';
+import { useNavigation } from '@react-navigation/native';
 
 type ShopItemProps = {
   item: {
@@ -21,26 +22,27 @@ const ShopCard = ({item}: any) => {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const [removeableShop, setRemoveableShop] = useState('');
+  const navigate:any = useNavigation()
   const isSaved =
     savedShops.length > 0 &&
     savedShops.some((shop: any) => shop.name === item.name);
   return (
     <>
-      <View className="bg-white mb-6 p-4 rounded-2xl flex flex-row gap-3">
+      <Pressable className="bg-white mb-6 p-4 rounded-2xl flex flex-row gap-3" onPress={()=>navigate.navigate('ShopDetail',{shop:item})}>
         <Image
           className="h-[80px] w-[80px] rounded-2xl"
-          source={item.ShopProfileImage}
+          source={require('../../assets/images/ShopProfileImage/Parlour_1.png')}
         />
         <View className="flex-1 flex-row justify-between">
           <View className="flex gap-2">
             <Text className="text-lg font-extrabold">{item.name}</Text>
             <Text className="text-sm text-black/60 font-bold">
-              {item.location.substring(0, 20)}...
+              {item.contactInfo.address}...
             </Text>
             <View className="flex flex-row gap-4">
               <View className="flex flex-row items-center gap-1">
                 <Icon name="location-sharp" size={15} color={'#FF8C42'} />
-                <Text className="text-sm font-bold">{item.distance} Km</Text>
+                <Text className="text-sm font-bold">2 Km</Text>
               </View>
               <View className="flex flex-row items-center gap-1">
                 <Icon name="star" size={15} color={'#FF8C42'} />
@@ -59,7 +61,7 @@ const ShopCard = ({item}: any) => {
             color={'#FF8C42'}
           />
         </View>
-      </View>
+      </Pressable>
       <RemoveSavedModal
         showModal={showModal}
         setShowModal={setShowModal}

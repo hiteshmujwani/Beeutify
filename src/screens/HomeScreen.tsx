@@ -23,23 +23,50 @@ import ShopCard from '../components/ui/ShopCard';
 import HorizontolList from '../components/ui/HorizontolList';
 import SearchBar from '../components/ui/SearchBar';
 import HorizontolListWithSvg from '../components/ui/HorizontolListWithSvg';
+import { GET_ALL_VENDORS } from '../constants/ApiUrls';
+import axios from 'axios';
+import { ApiClient } from '../lib/ApiClient';
+import { useDispatch, useSelector } from 'react-redux';
+import { addShop } from '../../store/slice/ShopSlice';
+
+
+
+
 export default function HomeScreen({navigation}: any) {
   const [nearbyShops, setNearbyShops]: any = useState([]);
   const [selectedService, setSelectedService]: any = useState(services[0]);
-  const filterByService = (service: any) => {
-    const filteredArray = shops.filter(shop =>
-      shop.services.includes(service.label),
-    );
-    setSelectedService(service);
-    setNearbyShops(filteredArray);
-  };
+  const [filteredShops,setFilteredShops]:any = useState()
+  const allShops = useSelector((state:any)=>state.shops) // we will use this later
+  const dispatch = useDispatch()
   const images = [offer_1, offer_2, offer_3];
   const {width: viewPortWidth} = Dimensions.get('window');
+
+  const filterByService = (service: any) => {
+    if(service.label == "All"){
+      setFilteredShops(nearbyShops)
+      setSelectedService(service)
+    }else{
+    const filteredArray = nearbyShops.filter((shop:any) =>
+      shop.services.some((item:any)=>item.name.toLowerCase().includes(service.label.toLowerCase())),
+    );
+    setSelectedService(service);
+    setFilteredShops(filteredArray);} 
+  };
+  
+  const fetchShops = async() =>{
+    const response = await axios.get(GET_ALL_VENDORS)
+    setNearbyShops(response.data)
+    setFilteredShops(response.data)
+    dispatch(addShop(response.data))
+  }
+  useEffect(()=>{
+    fetchShops()
+  },[])
 
   return (
     <SafeAreaView className=" flex-1 ">
       <ScrollView>
-        <StatusBar showHideTransition={'slide'} />
+        <StatusBar showHideTransition={'slide'} translucent/>
         <View className="m-3">
           {/* Header  */}
           <View className="flex flex-row gap-2 justify-between items-center">
@@ -153,7 +180,7 @@ export default function HomeScreen({navigation}: any) {
             </View>
             <View className="mt-4 flex gap-2">
               <FlatList
-                data={nearbyShops.length > 0 ? nearbyShops : shops}
+                data={filteredShops && filteredShops}
                 scrollEnabled={false}
                 showsHorizontalScrollIndicator={false}
                 renderItem={({item}) => <ShopCard item={item} />}

@@ -8,9 +8,12 @@ import Spa_1 from '../assets/images/ShopProfileImage/Spa_1.png';
 import Spa_2 from '../assets/images/ShopProfileImage/Spa_2.png';
 import Spa_3 from '../assets/images/ShopProfileImage/Spa_3.png';
 
+
+import Manicure from '../assets/images/CustomIcons/Manicure.svg';
+
 const shops = [
   {
-    id: '1',
+    id: '1',  
     name: 'Elite Spa',
     rating: 4.5,
     distance: 2.3,
@@ -193,3 +196,19 @@ const shops = [
 
 
 export default shops;
+
+
+export const ShopSections = [
+  {id:1,section:"About Us"},{id:2,section:"Services"},{id:3,section:"Package"},{id:4,section:"Gallery"},{id:5,section:"Reviews"}
+]
+
+
+export const CommonActions = [
+  {id:1,ActionName:"Website",icon:Manicure},{id:2,ActionName:"Website",icon:Manicure},{id:3,ActionName:"Website",icon:Manicure},{id:4,ActionName:"Website",icon:Manicure},{id:5,ActionName:"Website",icon:Manicure}
+]
+
+export const shopSpecialists = [
+  {id:1,name:"Deepak",profile:Spa_1,designation:"Hair Stylist"},{id:2,name:"Deepak",profile:Spa_1,designation:"Hair Stylist"},{id:3,name:"Deepak",profile:Spa_1,designation:"Hair Stylist"},{id:4,name:"Deepak",profile:Spa_1,designation:"Hair Stylist"},{id:5,name:"Deepak",profile:Spa_1,designation:"Hair Stylist"},{id:6,name:"Deepak",profile:Spa_1,designation:"Hair Stylist"},
+]
+
+export const shopHours = [{id:1,time:"9"},{id:2,time:"10"},{id:3,time:"11"},{id:4,time:"12"},{id:5,time:"13"},{id:6,time:"14"},{id:7,time:"15"},{id:8,time:"16"},{id:9,time:"17"},{id:10,time:"18"},{id:11,time:"19"},{id:12,time:"20"},{id:13,time:"21"}]

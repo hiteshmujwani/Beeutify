@@ -61,7 +61,7 @@ const SearchScreen = ({navigation}: any) => {
   }, [searchQuery]);
 
   return (
-    <SafeAreaView className=" flex-1">
+    <SafeAreaView className="flex-1">
       <ScrollView>
         <View className="m-3">
           <View className="flex flex-row gap-2">

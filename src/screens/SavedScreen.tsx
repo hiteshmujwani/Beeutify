@@ -22,7 +22,7 @@ const SavedScreen = ({navigation}: any) => {
   };
 
   return (
-    <SafeAreaView className="flex-1">
+    <SafeAreaView >
       <ScrollView>
         {savedShops.length > 0 && (
           <View className="m-3">
