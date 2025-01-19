@@ -3,61 +3,63 @@ import React, {useEffect, useState} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import SearchBar from '../components/ui/SearchBar';
 import FilterModal from '../components/ui/FilterModal';
-import shops from '../constants/Shops';
+// import shops from '../constants/Shops';
 import ShopCard from '../components/ui/ShopCard';
 import {Distance, Ratings} from '../constants/OtherData';
 import services from '../constants/Services';
+import { useSelector } from 'react-redux';
+import axios from 'axios';
+import { SEARCH_SHOPS } from '../constants/ApiUrls';
 
 const SearchScreen = ({navigation}: any) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [showModal, setShowModal] = useState(false);
+  const token = useSelector((state:any)=> state.user.token)
   const [searchResult, setSearchResult]: any = useState([]);
-  const [filterQuery, setFilterQuery] = useState({
-    service: services[0],
-    rating: Ratings[0],
-    distance: Distance[0],
-  });
+  // const [filterQuery, setFilterQuery] = useState({
+  //   service: services[0],
+  //   rating: Ratings[0],
+  //   distance: Distance[0],
+  // });
 
-  const SearchByQuery = () => {
-    setFilterQuery({
-      service: services[0],
-      rating: Ratings[0],
-      distance: Distance[0],
+  const SearchByQuery = async() => {
+
+    const response = await axios.get(`${SEARCH_SHOPS}?query=${searchQuery}`,{
+      headers: { Authorization: `Bearer ${token}` },
     });
-    const FilteredArray: any = shops.filter(shop =>
-      shop.name.toLowerCase().includes(searchQuery.toLowerCase()),
-    );
-    setSearchResult(FilteredArray);
+    console.log(response.data)
+        setSearchResult(response.data.shops);
+    // const FilteredArray: any = shops.filter((shop:any) =>
+    //   console.log(shop)
+    //   // shop.name.toLowerCase().includes(searchQuery.toLowerCase()),
+    
+    // );
   };
 
-  const handleFilter = (filter: boolean) => {
-    if (filter) {
-      let filteredArray = [];
-      if (searchResult.length > 0) {
-        filteredArray = searchResult.filter(
-          (
-            shop: any, //only service based filter is working will add more in future
-          ) => shop.services.includes(filterQuery.service.label),
-        );
-      } else {
-        filteredArray = shops.filter((shop: any) =>
-          shop.services.includes(filterQuery.service.label),
-        );
-      }
-      setSearchResult(filteredArray);
-      setShowModal(!showModal);
-    } else {
-      SearchByQuery();
-      setShowModal(!showModal);
-    }
-  };
+  // const handleFilter = (filter: boolean) => {
+  //   if (filter) {
+  //     let filteredArray = [];
+  //     if (searchResult.length > 0) {
+  //       filteredArray = searchResult.filter(
+  //         (
+  //           shop: any, //only service based filter is working will add more in future
+  //         ) => shop.services.includes(filterQuery.service.label),
+  //       );
+  //     } else {
+  //       filteredArray = shops.filter((shop: any) =>
+  //         shop.services.includes(filterQuery.service.label),
+  //       );
+  //     }
+  //     setSearchResult(filteredArray);
+  //     setShowModal(!showModal);
+  //   } else {
+  //     SearchByQuery();
+  //     setShowModal(!showModal);
+  //   }
+  // };
 
   useEffect(() => {
-    if (searchQuery.length >= 1) {
       SearchByQuery();
-    } else {
-      setSearchResult([]);
-    }
   }, [searchQuery]);
 
   return (
@@ -100,13 +102,13 @@ const SearchScreen = ({navigation}: any) => {
               </View>
             )}
           </View>
-          <FilterModal
+          {/* <FilterModal
             setShowModal={setShowModal}
             showModal={showModal}
             selected={filterQuery}
             setSelected={setFilterQuery}
             handleFilter={handleFilter}
-          />
+          /> */}
         </View>
       </ScrollView>
     </SafeAreaView>

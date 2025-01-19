@@ -10,9 +10,11 @@ import React, {useEffect, useState} from 'react';
 import BookingCard from '../components/ui/BookingCard';
 import axios from 'axios';
 import {CANCEL_BOOKING, GET_MY_BOOKINGS} from '../constants/ApiUrls';
+import { useSelector } from 'react-redux';
 
 const BookingScreen = () => {
-  const [allBookings, setAllBookings] = useState([]); 
+  const [allBookings, setAllBookings] = useState([]);
+  const userData = useSelector((state:any)=>state.user)
   const [filteredBookings, setFilteredBookings] = useState([]); 
   const [selectedStatus, setSelectedStatus] = useState("confirmed"); 
   const status = ['confirmed', 'completed', 'cancelled']; 
@@ -37,7 +39,7 @@ const BookingScreen = () => {
 
   const fetchAllBookings = async () => {
     try {
-      const response = await axios.get(GET_MY_BOOKINGS);
+      const response = await axios.post(GET_MY_BOOKINGS,{userId:userData.user._id});
       setAllBookings(response.data);
     } catch (error) {
       console.error('Error fetching bookings:', error);
@@ -80,7 +82,6 @@ const BookingScreen = () => {
                 scrollEnabled={false}
                 renderItem={({item}) => (
                   <BookingCard
-
                     handleRemoveBooking={handleRemoveBooking}
                     booking={item}
                   />

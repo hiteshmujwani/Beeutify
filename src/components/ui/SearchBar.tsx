@@ -25,7 +25,7 @@ const SearchBar = ({
           theme={{colors: {elevation: ''}}}
         />
       </View>
-      <View className="bg-white  h-full flex flex-row rounded-xl px-5 justify-center items-center">
+      {/* <View className="bg-white  h-full flex flex-row rounded-xl px-5 justify-center items-center">
         <TouchableOpacity
           className="bg-white rounded-xl"
           onPress={() => {
@@ -34,7 +34,7 @@ const SearchBar = ({
           }}>
           <FilterIcon />
         </TouchableOpacity>
-      </View>
+      </View> */}
     </>
   );
 };

@@ -1,16 +1,18 @@
 import {View, Text, TouchableOpacity, FlatList, Alert} from 'react-native';
 import React, { useState } from 'react';
-import {Calendar} from 'react-native-calendars';
+import {Calendar,LocaleConfig} from 'react-native-calendars';
 import { shopHours, shopSpecialists } from '../constants/Shops';
 import { Image } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import axios from 'axios';
 import { NEW_BOOKING } from '../constants/ApiUrls';
+import { useSelector } from 'react-redux';
 
 const BookAppointmentScreen = () => {
   const [selectedTime,setSelectedTime]:any = useState()
   const [selectedDate,setSelectedDate]:any = useState()
   const navigation :any= useNavigation()
+  const userData = useSelector((state:any)=>state.user)
   const route :any= useRoute()
   const {shop,selectedServices} = route.params
 
@@ -24,7 +26,7 @@ const BookAppointmentScreen = () => {
     selectedServices.map((item:any)=>{total+= item.price})
     const date = selectedDate.timestamp
     const data = {
-      user:"674f22ab3288d77f4dd529ba",
+      user:userData.user._id,
       shop:shop,
       services:selectedServices,
       specialists:shop,  //hardcoded this will come as user selection,
@@ -48,6 +50,10 @@ const BookAppointmentScreen = () => {
         <Text className="text-2xl font-extrabold">Select Date</Text>
         <View className="rounded-xl overflow-hidden">
           <Calendar
+          
+          markedDates={{
+            [selectedDate ? selectedDate.dateString : new Date]: {selected: true, marked: true, selectedColor: 'blue'}
+          }}
             onDayPress={(day: any) => {
               setSelectedDate(day);
             }}

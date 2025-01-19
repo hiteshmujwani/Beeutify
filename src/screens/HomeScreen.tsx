@@ -37,6 +37,7 @@ export default function HomeScreen({navigation}: any) {
   const [selectedService, setSelectedService]: any = useState(services[0]);
   const [filteredShops,setFilteredShops]:any = useState()
   const allShops = useSelector((state:any)=>state.shops) // we will use this later
+  const {user} = useSelector((state:any)=>state.user)
   const dispatch = useDispatch()
   const images = [offer_1, offer_2, offer_3];
   const {width: viewPortWidth} = Dimensions.get('window');
@@ -82,7 +83,7 @@ export default function HomeScreen({navigation}: any) {
                   Hello,
                 </Text>
                 <Text className="text-xl font-bold text-black">
-                  Hitesh Mujwani
+                 {user.name}
                 </Text>
               </View>
             </View>

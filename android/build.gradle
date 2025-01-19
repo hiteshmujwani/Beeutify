@@ -1,23 +1,23 @@
 buildscript {
     ext {
-        buildToolsVersion = "35.0.0"
+        buildToolsVersion = "34.0.0"
         minSdkVersion = 24
-        compileSdkVersion = 35
+        compileSdkVersion = 34
         targetSdkVersion = 34
         ndkVersion = "26.1.10909125"
-        kotlinVersion = "1.9.24"
+        kotlinVersion = "1.9.10"
         gms_version = '4.4.2'
-        gradle_version = '8.1.2' // Use a more compatible Gradle Plugin version
+        gradle_version = '8.1.2'
     }
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:$gradle_version")  // Compatible AGP version
+        classpath("com.android.tools.build:gradle:$gradle_version")
         classpath("com.facebook.react:react-native-gradle-plugin")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion") // Kotlin Gradle plugin
-        classpath("com.google.gms:google-services:$gms_version")  // Google Services Plugin
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
+        classpath("com.google.gms:google-services:$gms_version")
     }
 }
 
@@ -25,7 +25,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://jitpack.io' } // Add JitPack repository for some dependencies if needed
+        maven { url 'https://jitpack.io' }
     }
 }
 

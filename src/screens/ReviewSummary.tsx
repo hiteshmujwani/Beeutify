@@ -1,10 +1,10 @@
-import { View, Text, Pressable, Image } from 'react-native'
+import { View, Text, Pressable, Image, Alert } from 'react-native'
 import React, { useState } from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { Divider, Modal } from 'react-native-paper'
 import axios from 'axios'
 import { NEW_BOOKING } from '../constants/ApiUrls'
-import displayNotification from '../services/NotificaionServices/Notificationservice'
+import RazorpayCheckout from 'react-native-razorpay';
 
 const ReviewSummary = () => {
     const route = useRoute()
@@ -14,6 +14,7 @@ const ReviewSummary = () => {
 
     const handleBooking = async() =>{
         try {
+          console.log(data)
             const bodyData = {
                 user:data.user,
                 shop:data.shop._id,
@@ -22,12 +23,32 @@ const ReviewSummary = () => {
                 time:data.time,
                 totalAmount:data.totalAmount,
                 status:'confirmed',
-                specialists:data.shop.specialists[0]._id,
             }
-            const response = await axios.post(NEW_BOOKING,bodyData)
-            if(response.status == 200){
+
+            var options :any= {
+                description: 'Booking',
+                image: 'https://i.imgur.com/3g7nmJC.jpg',
+                currency: 'INR',
+                key: 'rzp_test_PGYjW94UUcCgL1',
+                amount: data.totalAmount * 100,
+                name: 'Beeutify',
+                order_id: '',//Replace this with an order_id created using Orders API.
+                prefill: {
+                  email: 'hiteshmujwani@gmail.com',
+                  contact: '9602681408',
+                  name: 'hitesh mujwani'
+                },
+                theme: {color: '#53a20e'}
+              }
+              RazorpayCheckout.open(options).then((data) => {
+                
                 setVisible(true)
-            }
+              }).catch((error) => {
+                // handle failure
+                Alert.alert(`Error: ${error.code} | ${error.description}`);
+              });
+              const response = await axios.post(NEW_BOOKING,bodyData)
+           
         } catch (error) {
             console.log("error while booking",error)
         }
@@ -42,7 +63,7 @@ const ReviewSummary = () => {
                 </View>
                 <View className='flex justify-between flex-row'>
                 <Text className='font-bold text-xl text-black/60'>Address</Text>
-                <Text className='font-bold text-xl'>{data?.shop?.contactInfo.address}</Text>
+                <Text className='font-bold text-xl'>{data?.shop?.contactInfo.address.substring(21)}</Text>
                 </View>
                 <View className='flex justify-between flex-row'>
                 <Text className='font-bold text-xl text-black/60'>Name</Text>
@@ -60,10 +81,7 @@ const ReviewSummary = () => {
                 <Text className='font-bold text-xl text-black/60'>Booking Hours</Text>
                 <Text className='font-bold text-xl'>{data?.time}:00 AM</Text>
                 </View>
-                <View className='flex justify-between flex-row'>
-                <Text className='font-bold text-xl text-black/60'>Specialist</Text>
-                <Text className='font-bold text-xl'>{data?.shop?.specialists[0].name}</Text>
-                </View>
+                
             </View>
 
             <View className='p-5 bg-white rounded-xl flex gap-4'>

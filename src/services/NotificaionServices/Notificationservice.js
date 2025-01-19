@@ -20,3 +20,9 @@ export default async function displayNotification(remoteMessage) {
       },
     });
   }
+
+
+   export const getFCMToken = async()=>{
+      const token = await messaging().getToken();
+      return token;
+    }
